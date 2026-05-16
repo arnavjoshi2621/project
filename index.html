@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Hey Vaishnavi 💗</title>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Cormorant+Garamond:ital,wght@0,400;1,300&family=Lato:wght@300;400&display=swap" rel="stylesheet"/>
+<style>
+/* ── VARIABLES ─────────────────────────────── */
+:root{
+  --pk:#fce4ec; --blush:#f8bbd0; --rose:#f48fb1;
+  --deep:#e91e63; --lav:#e1bee7; --lavm:#ce93d8;
+  --white:#fff; --offwhite:#fff9fb;
+  --td:#4a2040; --tm:#7b4b6a; --tl:#c2849d;
+  --glass:rgba(255,255,255,.48); --gb:rgba(255,255,255,.72);
+  --sh:0 8px 40px rgba(233,30,99,.13);
+  --glow:0 0 30px rgba(244,143,177,.38);
+  --fh:'Dancing Script',cursive;
+  --fe:'Cormorant Garamond',serif;
+  --fb:'Lato',sans-serif;
+}
+
+/* ── RESET ─────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:linear-gradient(135deg,#fce4ec 0%,#fff0f6 45%,#f3e5f5 100%);
+  min-height:100vh; font-family:var(--fb); color:var(--td);
+  overflow-x:hidden; cursor:none;
+}
+@media(max-width:600px){body{cursor:auto}}
+
+/* ── LOADING SCREEN ────────────────────────── */
+/* KEY FIX: CSS animation hides it after 3.5s — works even if JS is slow */
+#loader{
+  position:fixed;inset:0;z-index:9999;
+  background:linear-gradient(135deg,#fce4ec,#f8bbd0,#e1bee7);
+  display:flex;align-items:center;justify-content:center;flex-direction:column;
+  animation: loaderOut 0.7s ease 3.2s forwards;
+}
+@keyframes loaderOut{
+  to{opacity:0;visibility:hidden;pointer-events:none}
+}
+.ld-hearts{font-size:2rem;display:flex;gap:14px;margin-bottom:22px;
+  animation:pulse 1.3s ease-in-out infinite}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.18)}}
+.ld-text{
+  font-family:var(--fh);font-size:clamp(1.1rem,4vw,1.8rem);
+  color:var(--td);text-align:center;
+  overflow:hidden;white-space:nowrap;border-right:2px solid var(--deep);
+  width:0;animation:typing 2.6s steps(42,end) 0.3s forwards,
+                         blink .75s step-end infinite;
+}
+@keyframes typing{to{width:100%}}
+@keyframes blink{50%{border-color:transparent}}
+
+/* ── MAIN — starts hidden, CSS reveals after loader gone ── */
+#main{
+  opacity:0;
+  animation:mainIn 0.8s ease 3.7s forwards;
+}
+@keyframes mainIn{to{opacity:1}}
+
+/* ── SCROLL BAR ────────────────────────────── */
+#spb{position:fixed;top:0;left:0;height:3px;width:0;z-index:8000;
+  background:linear-gradient(90deg,var(--rose),var(--lavm));transition:width .1s linear}
+
+/* ── CANVAS ────────────────────────────────── */
+#hc{position:fixed;inset:0;pointer-events:none;z-index:0}
+#pc{position:absolute;inset:0;pointer-events:none;z-index:0}
+
+/* ── CURSOR ────────────────────────────────── */
+#cg{position:fixed;width:26px;height:26px;border-radius:50%;pointer-events:none;
+  z-index:8999;transform:translate(-50%,-50%);
+  background:radial-gradient(circle,rgba(244,143,177,.55) 0%,transparent 70%);
+  mix-blend-mode:multiply;transition:left .04s,top .04s}
+@media(max-width:600px){#cg{display:none}}
+
+/* ── SHARED SECTION ────────────────────────── */
+section{position:relative;z-index:1;
+  padding:clamp(60px,10vw,110px) clamp(18px,6vw,80px);
+  max-width:1080px;margin:0 auto}
+.slabel{font-family:var(--fb);font-size:.72rem;letter-spacing:.25em;
+  text-transform:uppercase;color:var(--tl);margin-bottom:10px}
+.stitle{font-family:var(--fh);font-size:clamp(1.9rem,5vw,3rem);
+  color:var(--td);margin-bottom:44px;line-height:1.2}
+
+/* ── FADE-IN ───────────────────────────────── */
+.fi{opacity:0;transform:translateY(26px);
+  transition:opacity .75s ease,transform .75s ease}
+.fi.on{opacity:1;transform:translateY(0)}
+
+/* ══ HERO ══════════════════════════════════ */
+#hero{min-height:100vh;display:flex;align-items:center;
+  justify-content:center;text-align:center;max-width:100%;padding:40px 20px}
+.hero-sub{font-family:var(--fb);font-size:.82rem;letter-spacing:.22em;
+  color:var(--tl);text-transform:uppercase;margin-bottom:14px}
+#hero-name{font-family:var(--fh);font-size:clamp(2.8rem,10vw,5.8rem);
+  color:var(--deep);line-height:1.1;margin-bottom:26px;
+  text-shadow:0 4px 22px rgba(233,30,99,.2);min-height:1.2em}
+.hero-tag{font-family:var(--fe);font-style:italic;
+  font-size:clamp(.95rem,2.5vw,1.25rem);color:var(--tm);
+  line-height:1.85;margin-bottom:46px}
+.cta{display:inline-block;padding:13px 34px;border-radius:50px;border:none;
+  background:linear-gradient(135deg,var(--rose),var(--lavm));color:#fff;
+  font-family:var(--fh);font-size:1.15rem;cursor:pointer;
+  box-shadow:0 6px 28px rgba(244,143,177,.42);transition:all .3s ease}
+.cta:hover{transform:translateY(-4px) scale(1.04);
+  box-shadow:0 12px 38px rgba(233,30,99,.32)}
+
+/* ══ QUESTIONS ═════════════════════════════ */
+#questions{text-align:center}
+#qwrap{max-width:580px;margin:0 auto}
+.qcard{background:var(--glass);backdrop-filter:blur(20px);
+  border:1px solid var(--gb);border-radius:22px;padding:38px 32px;
+  box-shadow:var(--sh);animation:cin .5s ease}
+@keyframes cin{from{opacity:0;transform:translateY(18px) scale(.97)}to{opacity:1;transform:none}}
+.qnum{font-size:.72rem;letter-spacing:.2em;color:var(--tl);
+  text-transform:uppercase;margin-bottom:14px}
+.qtext{font-family:var(--fh);font-size:clamp(1.2rem,3vw,1.6rem);
+  color:var(--td);margin-bottom:30px;line-height:1.5}
+.qdots{display:flex;justify-content:center;gap:8px;margin-bottom:24px}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--blush);
+  transition:background .3s,transform .3s}
+.dot.active{background:var(--rose);transform:scale(1.35)}
+.dot.done{background:var(--lavm)}
+.abts{display:flex;flex-wrap:wrap;gap:11px;justify-content:center}
+.abt{padding:10px 20px;border-radius:50px;border:1.5px solid var(--blush);
+  background:rgba(255,255,255,.6);font-family:var(--fe);font-size:.98rem;
+  color:var(--td);cursor:pointer;backdrop-filter:blur(8px);transition:all .25s}
+.abt:hover,.abt.sel{background:linear-gradient(135deg,var(--blush),var(--lav));
+  border-color:var(--rose);transform:scale(1.05);
+  box-shadow:0 4px 16px rgba(244,143,177,.32)}
+.qdone{font-family:var(--fe);font-style:italic;font-size:1.1rem;
+  color:var(--tm);padding:28px;animation:cin .6s ease}
+
+/* ══ TIMELINE ══════════════════════════════ */
+#memories{text-align:left}
+.tl{position:relative;padding-left:30px}
+.tl::before{content:'';position:absolute;left:10px;top:0;bottom:0;width:2px;
+  background:linear-gradient(to bottom,var(--blush),var(--lavm),transparent)}
+.ti{position:relative;margin-bottom:36px;padding-left:22px}
+.ti::before{content:'💗';position:absolute;left:-26px;top:4px;font-size:.95rem;
+  filter:drop-shadow(0 0 5px rgba(233,30,99,.4))}
+.tc{background:var(--glass);backdrop-filter:blur(18px);
+  border:1px solid var(--gb);border-radius:18px;padding:22px 26px;
+  box-shadow:var(--sh);transition:transform .3s,box-shadow .3s}
+.tc:hover{transform:translateX(5px) translateY(-3px);box-shadow:var(--glow)}
+.ti-icon{font-size:1.5rem;margin-bottom:8px;display:block}
+.tc h3{font-family:var(--fh);font-size:1.15rem;color:var(--deep);margin-bottom:7px}
+.tc p{font-family:var(--fe);font-style:italic;font-size:.98rem;
+  color:var(--tm);line-height:1.75}
+
+/* ══ GALLERY ═══════════════════════════════ */
+#gallery{text-align:center}
+.gnote{font-family:var(--fe);font-style:italic;color:var(--tl);
+  font-size:.98rem;margin-top:-32px;margin-bottom:38px}
+.ggrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:15px}
+.gi{border-radius:16px;overflow:hidden;aspect-ratio:1;cursor:pointer;
+  background:var(--glass);backdrop-filter:blur(12px);
+  border:1px solid var(--gb);position:relative;
+  box-shadow:var(--sh);transition:transform .3s,box-shadow .3s}
+.gi:hover{transform:scale(1.05) rotate(1deg);box-shadow:var(--glow)}
+.gi img{width:100%;height:100%;object-fit:cover;display:block}
+.gi.ph img{display:none}
+.phi{display:none;position:absolute;inset:0;align-items:center;
+  justify-content:center;flex-direction:column;font-family:var(--fb);
+  font-size:.78rem;color:var(--tl);gap:7px;text-align:center;padding:10px}
+.gi.ph .phi{display:flex}
+
+/* ── LIGHTBOX ──────────────────────────────── */
+#lb{display:none;position:fixed;inset:0;z-index:7000;
+  background:rgba(74,32,64,.88);backdrop-filter:blur(10px);
+  align-items:center;justify-content:center}
+#lb.open{display:flex}
+#lb img{max-width:90vw;max-height:85vh;border-radius:16px;
+  box-shadow:0 20px 60px rgba(0,0,0,.5);animation:zin .35s cubic-bezier(.34,1.56,.64,1)}
+@keyframes zin{from{transform:scale(.8);opacity:0}to{transform:scale(1);opacity:1}}
+#lbc{position:absolute;top:18px;right:22px;background:none;border:none;
+  color:#fff;font-size:1.8rem;cursor:pointer;transition:transform .2s}
+#lbc:hover{transform:scale(1.2) rotate(90deg)}
+
+/* ══ LETTER ════════════════════════════════ */
+#letter{text-align:center}
+.lcard{max-width:660px;margin:0 auto;background:var(--glass);
+  backdrop-filter:blur(20px);border:1px solid var(--gb);border-radius:26px;
+  padding:50px 44px;box-shadow:var(--sh);position:relative}
+.lcard::before{content:'💌';position:absolute;top:-18px;left:50%;
+  transform:translateX(-50%);font-size:2.2rem;
+  filter:drop-shadow(0 8px 16px rgba(233,30,99,.3))}
+.ldate{font-family:var(--fh);font-size:1.35rem;color:var(--deep);margin-bottom:26px;text-align:left}
+.lcard p{font-family:var(--fe);font-size:1.03rem;color:var(--td);
+  line-height:1.9;margin-bottom:18px;text-align:left}
+.lsign{font-family:var(--fh);font-size:1.05rem;color:var(--tm);margin-top:28px;text-align:left}
+
+/* ══ FINALE ════════════════════════════════ */
+#finale{position:relative;min-height:100vh;display:flex;align-items:center;
+  justify-content:center;text-align:center;
+  background:linear-gradient(160deg,#880e4f 0%,#ad1457 40%,#c2185b 70%,#6a1b9a 100%);
+  border-radius:40px 40px 0 0;max-width:100%;overflow:hidden;
+  padding:80px 22px;margin:0}
+.fin-inner{position:relative;z-index:2;max-width:680px}
+.fin-shift{font-family:var(--fb);font-size:.88rem;letter-spacing:.15em;
+  color:rgba(255,255,255,.6);text-transform:uppercase;margin-bottom:26px}
+.fin-h{font-family:var(--fh);font-size:clamp(1.7rem,5vw,2.8rem);
+  color:#fff;line-height:1.45;margin-bottom:26px}
+.fin-h span{color:#f8bbd0}
+.fin-ask{font-family:var(--fe);font-style:italic;
+  font-size:clamp(.95rem,2.5vw,1.25rem);color:rgba(255,255,255,.87);
+  line-height:1.85;margin-bottom:50px}
+.fin-btns{display:flex;gap:18px;justify-content:center;flex-wrap:wrap}
+.byes,.btime{padding:13px 30px;border-radius:50px;
+  border:1.5px solid rgba(255,255,255,.4);font-family:var(--fh);
+  font-size:1.1rem;cursor:pointer;transition:all .3s;backdrop-filter:blur(12px)}
+.byes{background:rgba(255,255,255,.2);color:#fff}
+.byes:hover{background:rgba(255,255,255,.35);transform:translateY(-4px)}
+.btime{background:rgba(0,0,0,.15);color:rgba(255,255,255,.82)}
+.btime:hover{background:rgba(0,0,0,.28);transform:translateY(-4px)}
+#ares{margin-top:36px;padding:26px 30px;background:rgba(255,255,255,.1);
+  backdrop-filter:blur(12px);border-radius:18px;
+  border:1px solid rgba(255,255,255,.2);display:none;animation:cin .6s ease}
+#ares p{font-family:var(--fe);font-style:italic;font-size:1.08rem;
+  color:rgba(255,255,255,.92);line-height:1.85}
+
+/* ── FOOTER ────────────────────────────────── */
+footer{text-align:center;padding:30px 20px;
+  background:linear-gradient(to bottom,#6a1b9a,#4a148c)}
+footer p{font-family:var(--fh);font-size:1.05rem;color:rgba(255,255,255,.58)}
+
+/* ── BLOBS ─────────────────────────────────── */
+body::before,body::after{content:'';position:fixed;border-radius:50%;
+  pointer-events:none;z-index:0;filter:blur(80px)}
+body::before{width:480px;height:480px;top:-130px;left:-130px;
+  background:radial-gradient(circle,rgba(244,143,177,.17),transparent 70%)}
+body::after{width:380px;height:380px;bottom:8%;right:-90px;
+  background:radial-gradient(circle,rgba(206,147,216,.17),transparent 70%)}
+
+/* ── RESPONSIVE ────────────────────────────── */
+@media(max-width:620px){
+  section{padding:55px 16px}
+  .lcard{padding:38px 20px}
+  .tl{padding-left:22px}
+  .tl::before{left:4px}
+  .ti{padding-left:14px}
+  .ti::before{left:-20px}
+  .ggrid{grid-template-columns:repeat(2,1fr)}
+  #finale{border-radius:24px 24px 0 0;padding:60px 16px}
+  .fin-btns{flex-direction:column;align-items:center}
+}
+</style>
+</head>
+<body>
+
+<!-- LOADING — hides itself via CSS animation at 3.2s, no JS needed -->
+<div id="loader">
+  <div class="ld-hearts"><span>💗</span><span>🤍</span><span>💗</span></div>
+  <p class="ld-text">Just a small world made with feelings…</p>
+</div>
+
+<!-- SCROLL BAR -->
+<div id="spb"></div>
+
+<!-- HEARTS CANVAS -->
+<canvas id="hc"></canvas>
+
+<!-- CURSOR GLOW -->
+<div id="cg"></div>
+
+<!-- ════════ MAIN ════════ -->
+<div id="main">
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="fi" id="hero-box">
+      <p class="hero-sub">a little something for…</p>
+      <h1 id="hero-name"></h1>
+      <p class="hero-tag">
+        "This website is not to force anything…<br/>
+        it's just a small collection of moments that meant a lot to me."
+      </p>
+      <button class="cta" onclick="goto('questions')">Open Our Story 💗</button>
+    </div>
+  </section>
+
+  <!-- QUESTIONS -->
+  <section id="questions">
+    <p class="slabel">before we begin…</p>
+    <h2 class="stitle fi">A few small questions 🥺</h2>
+    <div id="qwrap"></div>
+  </section>
+
+  <!-- TIMELINE -->
+  <section id="memories">
+    <p class="slabel">our story</p>
+    <h2 class="stitle fi">A Timeline of Moments ✨</h2>
+    <div class="tl" id="tl"></div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery">
+    <p class="slabel">little frames</p>
+    <h2 class="stitle fi">Our Little Gallery 🌸</h2>
+    <p class="gnote fi">Every picture tells the part words couldn't finish.</p>
+    <div class="ggrid fi" id="ggrid">
+      <!-- REPLACE src with your actual photo paths e.g. "photos/her1.jpg" -->
+      <div class="gi" data-src="her-photo-1.jpg"><img src="/workspaces/project/WhatsApp Image 2026-05-16 at 19.41.50.jpeg" alt="" onerror="this.closest('.gi').classList.add('ph')"/><div class="phi">📷<br/>her-photo-1.jpg</div></div>
+      <div class="gi" data-src="memory-photo-1.jpg"><img src="/workspaces/project/WhatsApp Image 2026-05-16 at 19.41.49 (1).jpeg" alt="" onerror="this.closest('.gi').classList.add('ph')"/><div class="phi">📷<br/></div></div>
+      <div class="gi" data-src="memory-photo-2.jpg"><img src="/workspaces/project/WhatsApp Image 2026-05-16 at 19.41.49.jpeg"alt="" onerror="this.closest('.gi').classList.add('ph')"/><div class="phi">📷<br/>memory-photo-2.jpg</div></div>
+      <div class="gi" data-src="memory-photo-3.jpg"><img src="/workspaces/project/her photo1.jpeg"alt="" onerror="this.closest('.gi').classList.add('ph')"/><div class="phi">📷<br/>memory-photo-3.jpg</div></div>
+      <!-- ADD MORE: copy a line above, change src & placeholder text -->
+    </div>
+  </section>
+
+  <!-- LIGHTBOX -->
+  <div id="lb"><button id="lbc">✕</button><img id="lbi" src="" alt=""/></div>
+
+  <!-- LETTER -->
+  <section id="letter">
+    <p class="slabel">from the heart</p>
+    <h2 class="stitle fi">A Letter I Never Quite Sent 💌</h2>
+    <div class="lcard fi">
+      <p class="ldate">Dear Vaishnavi,</p>
+      <p>I want you to know — I never wanted to make you feel uncomfortable, not even for a single moment. That has never been, and will never be, my intention.</p>
+      <p>Your presence in my life made ordinary days feel genuinely lighter. I didn't plan for it. It just happened — quietly, naturally, the way all real things do.</p>
+      <p>I still value the bond we had. Every small conversation, every shared laugh, every quiet moment — none of it felt small to me. Even the tiniest gestures, things you probably don't remember, became little things I held onto.</p>
+      <p>I miss the old comfort between us — the kind where we could talk without overthinking. The kind where things felt easy.</p>
+      <p>I'm not asking for anything beyond that. Just honesty, and maybe someday — when you feel ready — a conversation.</p>
+      <p class="lsign">With genuine warmth,<br/><em>Someone who still cares.</em></p>
+    </div>
+  </section>
+
+  <!-- FINALE -->
+  <section id="finale">
+    <canvas id="pc"></canvas>
+    <div class="fin-inner fi">
+      <p class="fin-shift">Somewhere after March… things started feeling different.</p>
+      <h2 class="fin-h">I don't know what changed between us…<br/><span>but I genuinely miss the way we used to talk.</span></h2>
+      <p class="fin-ask">"Can you give me a little of your time someday…<br/>so we can talk properly once again?"</p>
+      <div class="fin-btns">
+        <button class="byes" onclick="ans('yes')">💗 Yes, let's talk</button>
+        <button class="btime" onclick="ans('time')">🥺 I need some time</button>
+      </div>
+      <div id="ares"></div>
+    </div>
+  </section>
+
+  <footer><p>Made with genuine feelings, memories, and hope. 💗</p></footer>
+</div><!-- /main -->
+
+<script>
+// ══════════════════════════════════════════════
+// ALL JS — inline so no file loading can fail
+// ══════════════════════════════════════════════
+
+// ── CURSOR ────────────────────────────────────
+var cg=document.getElementById('cg');
+document.addEventListener('mousemove',function(e){
+  cg.style.left=e.clientX+'px'; cg.style.top=e.clientY+'px';
+});
+
+// ── SCROLL PROGRESS ───────────────────────────
+window.addEventListener('scroll',function(){
+  var spb=document.getElementById('spb');
+  var total=document.documentElement.scrollHeight-window.innerHeight;
+  if(total>0) spb.style.width=((window.scrollY/total)*100)+'%';
+});
+
+// ── HERO TYPING — starts after CSS reveals main (3.7s) ─
+setTimeout(function(){
+  var el=document.getElementById('hero-name');
+  var text='Hey Vaishnavi…';
+  var i=0;
+  el.textContent='';
+  var iv=setInterval(function(){
+    el.textContent=text.slice(0,i+1);
+    i++;
+    if(i>=text.length){
+      clearInterval(iv);
+      var hb=document.getElementById('hero-box');
+      if(hb) hb.classList.add('on');
+    }
+  },90);
+}, 3900);
+
+// ── FADE IN ON SCROLL ─────────────────────────
+function setupFadeIns(){
+  var obs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        e.target.classList.add('on');
+        obs.unobserve(e.target);
+      }
+    });
+  },{threshold:0.1,rootMargin:'0px 0px -30px 0px'});
+  document.querySelectorAll('.fi').forEach(function(el){ obs.observe(el); });
+}
+// Run after main becomes visible
+setTimeout(setupFadeIns, 3800);
+
+// ── FLOATING HEARTS CANVAS ────────────────────
+(function(){
+  var c=document.getElementById('hc');
+  var ctx=c.getContext('2d');
+  var hearts=[];
+  function resize(){ c.width=window.innerWidth; c.height=window.innerHeight; }
+  window.addEventListener('resize',resize); resize();
+
+  var emojis=['💗','🌸','💕','✨','🤍','💫'];
+  function spawn(randY){
+    hearts.push({
+      x:Math.random()*window.innerWidth,
+      y:randY?Math.random()*window.innerHeight:window.innerHeight+30,
+      size:Math.random()*15+9,
+      speed:Math.random()*.55+.18,
+      drift:(Math.random()-.5)*.5,
+      op:Math.random()*.35+.1,
+      e:emojis[Math.floor(Math.random()*emojis.length)]
+    });
+  }
+  for(var i=0;i<18;i++) spawn(true);
+
+  function loop(){
+    ctx.clearRect(0,0,c.width,c.height);
+    if(Math.random()<.04) spawn(false);
+    hearts=hearts.filter(function(h){return h.y>-40;});
+    hearts.forEach(function(h){
+      ctx.globalAlpha=h.op;
+      ctx.font=h.size+'px serif';
+      ctx.fillText(h.e,h.x,h.y);
+      h.y-=h.speed; h.x+=h.drift;
+      h.drift+=(Math.random()-.5)*.02;
+    });
+    ctx.globalAlpha=1;
+    requestAnimationFrame(loop);
+  }
+  loop();
+})();
+
+// ── PARTICLES (Finale) ────────────────────────
+(function(){
+  var fin=document.getElementById('finale');
+  var c=document.getElementById('pc');
+  var started=false;
+  var obs=new IntersectionObserver(function(entries){
+    if(entries[0].isIntersecting && !started){
+      started=true; obs.disconnect();
+      var ctx=c.getContext('2d');
+      c.width=fin.offsetWidth; c.height=fin.offsetHeight;
+      var pts=[];
+      for(var i=0;i<55;i++) pts.push({
+        x:Math.random()*c.width, y:Math.random()*c.height,
+        r:Math.random()*2+.5, dx:(Math.random()-.5)*.4,
+        dy:-(Math.random()*.4+.1), a:Math.random()*.5+.1
+      });
+      (function loop(){
+        ctx.clearRect(0,0,c.width,c.height);
+        pts.forEach(function(p){
+          ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+          ctx.fillStyle='rgba(255,255,255,'+p.a+')'; ctx.fill();
+          p.x+=p.dx; p.y+=p.dy;
+          if(p.y<-5) p.y=c.height+5;
+          if(p.x<-5) p.x=c.width+5;
+          if(p.x>c.width+5) p.x=-5;
+        });
+        requestAnimationFrame(loop);
+      })();
+    }
+  },{threshold:.1});
+  obs.observe(fin);
+})();
+
+// ── QUESTIONS ─────────────────────────────────
+var QS=[
+  {q:"How was your day today? 🌸",a:["Really good!","Pretty okay.","Could've been better.","Not great, honestly."]},
+  {q:"Are you smiling right now? 🥺",a:["Yes, a little 😊","No, not really.","Maybe a tiny bit?","I wasn't… but now I am."]},
+  {q:"Do you still remember our first conversations? 💬",a:["Of course I do.","Bits and pieces.","Not really…","Some parts, yes."]},
+  {q:"Was I ever special to you, even for a little moment? 💗",a:["Yes, genuinely.","Maybe a little.","I'm not sure.","I'd rather not say."]},
+  {q:"Do you miss our old bond? 🌿",a:["Yes, I really do.","Sometimes, yes.","A tiny bit.","I'm still figuring that out."]},
+  {q:"If things changed between us… can we still fix them? 🕊️",a:["I think we can.","Maybe with time.","I don't know yet.","I hope so too."]}
+];
+var curQ=0;
+var qw=document.getElementById('qwrap');
+
+function renderQ(idx){
+  if(idx>=QS.length){
+    qw.innerHTML='<div class="qdone">Thank you for answering honestly. 💗<br/><em>Scroll down to read the rest of this little world…</em></div>';
+    return;
+  }
+  var q=QS[idx];
+  var dots=QS.map(function(_,i){
+    return '<div class="dot'+(i<idx?' done':i===idx?' active':'')+'"></div>';
+  }).join('');
+  qw.innerHTML='<div class="qcard"><div class="qdots">'+dots+'</div>'
+    +'<p class="qnum">Question '+(idx+1)+' of '+QS.length+'</p>'
+    +'<p class="qtext">'+q.q+'</p>'
+    +'<div class="abts">'+q.a.map(function(a,ai){
+      return '<button class="abt" onclick="pickA(this,'+idx+')">'+a+'</button>';
+    }).join('')+'</div></div>';
+}
+function pickA(btn,idx){
+  btn.classList.add('sel');
+  btn.closest('.abts').querySelectorAll('.abt').forEach(function(b){b.disabled=true;});
+  setTimeout(function(){ curQ=idx+1; renderQ(curQ); },700);
+}
+renderQ(0);
+
+// ── TIMELINE ──────────────────────────────────
+// ADD MORE MEMORIES: add {icon,title,text} to this array
+var MEM=[
+  {i:'📩',t:'The Message That Started Everything',p:'One notification. One name I hadn\'t quite let myself think about yet. But somehow, that first message felt like the beginning of something that would stay with me much longer than I expected.'},
+  {i:'👕',t:'The First Time We Actually Met',p:'Navy blue. That\'s what I remember. You wore a navy blue top and talked so naturally, and I thought — this person is going to be hard to forget.'},
+  {i:'🎬',t:'The I-Prozone Shoot',p:'We were behind the scenes of something bigger, but somehow the real memory was just the time we spent there — talking, laughing, being present together without needing a reason.'},
+  {i:'🥟',t:'Momos & The First Instagram Message',p:'Momos. Simple, warm, shared. And somewhere between those bites, you sent me a message on Instagram that I probably read three times more than I should have.'},
+  {i:'🚶',t:'Walking to the Exam Hall',p:'I walked with you, and we talked so much that I forgot we were heading somewhere serious. For those few minutes, it was just us and the conversation. I didn\'t want it to end.'},
+  {i:'🎥',t:'When You Held My Hand for a Reel',p:'Just a reel. Just content. But my heart didn\'t get the memo. I stood there trying very hard to act like that was completely normal.'},
+  {i:'🌼',t:'The Day You Came to Calm Me Down',p:'You told me to be happy — like before. I don\'t think you knew how much that stayed with me. That you noticed. That you came. That it mattered to you too.'},
+  {i:'🤍',t:'White Kurti & Tiny Bindi',p:'I don\'t know if I\'ve ever told you this clearly. But that day — the white kurti, the tiny bindi — something inside me quietly decided I was in trouble.'},
+  {i:'🏍️',t:'Our First Bike Ride',p:'Wind, road, and you beside me. I kept the pace slow, and I don\'t think it was entirely by accident.'},
+  {i:'🏸',t:'Badminton Together',p:'I\'m still not sure who won. But I know I was paying attention to the wrong things — your laugh, mostly, every time a shot went wide.'},
+  {i:'🛕',t:'Khandoba Mandir with Friends',p:'A group outing. But I still have a specific version of it saved — the one where you were there, and everything felt a little more colorful because of it.'},
+  {i:'🌙',t:'Long Conversations',p:'There were conversations where time just disappeared. Where we shared things we probably wouldn\'t share with most people. Those felt rare. They still do.'},
+  {i:'🥪',t:'Desert Villa Sandwiches & Nail Paint',p:'Sandwiches and nail paint on my nails. You laughed, and I didn\'t even pretend to protest. That\'s how comfortable it felt. That\'s what I miss.'},
+  {i:'🪢',t:'Your Hair Clip on My Hair',p:'A small, careless gesture. You clipped your hair clutch onto my hair and kept talking like nothing happened. I was quietly trying to hold still and not ruin the moment.'},
+  {i:'🍵',t:'Your Home, Maggi & Tea',p:'Maggi made by you. Tea made by you. A home I got to visit once. It felt like a privilege — not the food, but the fact that you let me into your world, even briefly.'},
+  {i:'📚',t:'Studying Together',p:'Even the boring parts were better shared. I think I understood very little of what I was studying, but I remember every moment we sat across from each other trying.'},
+  {i:'✈️',t:'Bangalore Internship Plans',p:'You said we should do internship together in Bangalore. Just like that, casually. I said sure, casually. Inside, I was already planning the conversations we\'d have.'},
+  {i:'🏍️',t:'Triple Seat to Bhadra Maruti',p:'Three of us. One bike. The kind of messy, crowded, laughing ride that becomes a memory the moment it\'s happening. I don\'t think I\'ve forgotten a second of it.'},
+  {i:'💜',t:'Purple Saree — Traditional Day',p:'Purple suited you like it was made for you specifically. I don\'t think I said anything. I think I just looked, and quietly decided some things don\'t need to be said out loud.'},
+  {i:'🤍',t:'White Saree — South Indian Look',p:'You looked like a photograph someone would frame. I tried to find words and couldn\'t. Some moments just deserve silence.'},
+  {i:'🌸',t:'The Flower You Placed in My Hair',p:'A small flower. Your hands. My hair. It lasted a moment but it\'s lived in my mind much longer than that.'},
+  {i:'🪞',t:'Mirror Eye Contact While Riding',p:'I looked in the mirror while riding and your eyes were already there. A second — maybe two. But it said something neither of us put into words.'},
+  {i:'🎮',t:'Trampoline & Laser Game',p:'We jumped. We played. We laughed at things that weren\'t even that funny. I didn\'t want that afternoon to end. I still don\'t, somehow.'},
+  {i:'☕',t:'Starbucks — The Confession & The Letter',p:'The most honest I\'ve ever been. I handed you something I wrote and watched you read it. That took everything I had. Whatever came next — I don\'t regret doing it.'},
+  {i:'🏡',t:'The First Time You Came to My Home',p:'You sat in my space, in my world, and it felt completely right. I didn\'t know how to say that then. I\'m still not sure I can say it now.'},
+  {i:'🍋',t:'Sharing Limca & Small Caring Gestures',p:'A shared Limca. A small kindness in passing. The kind of caring that doesn\'t announce itself. I noticed every time. Every single time.'},
+  {i:'📋',t:'Helping Each Other in Practicals',p:'We showed up for each other in the quiet, unglamorous ways too — the submission deadlines, the rushed notes, the "did you get this done?" That mattered. That was real.'}
+];
+
+(function buildTL(){
+  var tl=document.getElementById('tl');
+  MEM.forEach(function(m,idx){
+    var d=document.createElement('div');
+    d.className='ti fi';
+    d.style.transitionDelay=(idx*25)+'ms';
+    d.innerHTML='<div class="tc"><span class="ti-icon">'+m.i+'</span><h3>'+m.t+'</h3><p>'+m.p+'</p></div>';
+    tl.appendChild(d);
+  });
+})();
+
+// ── GALLERY LIGHTBOX ──────────────────────────
+var lb=document.getElementById('lb');
+var lbi=document.getElementById('lbi');
+document.getElementById('lbc').addEventListener('click',closeLB);
+lb.addEventListener('click',function(e){ if(e.target===lb) closeLB(); });
+document.querySelectorAll('.gi').forEach(function(g){
+  g.addEventListener('click',function(){
+    if(g.classList.contains('ph')) return;
+    lbi.src=g.dataset.src; lb.classList.add('open');
+    document.body.style.overflow='hidden';
+  });
+});
+document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeLB(); });
+function closeLB(){ lb.classList.remove('open'); document.body.style.overflow=''; lbi.src=''; }
+
+// ── FINALE BUTTONS ────────────────────────────
+function ans(t){
+  var ar=document.getElementById('ares');
+  ar.style.display='block';
+  ar.innerHTML=t==='yes'
+    ?'<p>💗 That means everything.<br/><br/>No rush, no pressure — just whenever you feel like it.<br/>I\'ll be here, and I\'ll listen with everything I have.</p>'
+    :'<p>🥺 That\'s completely okay.<br/><br/>Take all the time you need. Genuinely.<br/>Some things are worth waiting for — and so are you.</p>';
+  setTimeout(function(){ ar.scrollIntoView({behavior:'smooth',block:'center'}); },200);
+}
+
+// ── UTILITY ───────────────────────────────────
+function goto(id){
+  var el=document.getElementById(id);
+  if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+}
+</script>
+</body>
+</html>
