@@ -151,22 +151,7 @@ section{position:relative;z-index:1;
 .tc p{font-family:var(--fe);font-style:italic;font-size:.98rem;
   color:var(--tm);line-height:1.75}
 
-/* ══ GALLERY ═══════════════════════════════ */
-#gallery{text-align:center}
-.gnote{font-family:var(--fe);font-style:italic;color:var(--tl);
-  font-size:.98rem;margin-top:-32px;margin-bottom:38px}
-.ggrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:15px}
-.gi{border-radius:16px;overflow:hidden;aspect-ratio:1;cursor:pointer;
-  background:var(--glass);backdrop-filter:blur(12px);
-  border:1px solid var(--gb);position:relative;
-  box-shadow:var(--sh);transition:transform .3s,box-shadow .3s}
-.gi:hover{transform:scale(1.05) rotate(1deg);box-shadow:var(--glow)}
-.gi img{width:100%;height:100%;object-fit:cover;display:block}
-.gi.ph img{display:none}
-.phi{display:none;position:absolute;inset:0;align-items:center;
-  justify-content:center;flex-direction:column;font-family:var(--fb);
-  font-size:.78rem;color:var(--tl);gap:7px;text-align:center;padding:10px}
-.gi.ph .phi{display:flex}
+
 
 /* ── LIGHTBOX ──────────────────────────────── */
 #lb{display:none;position:fixed;inset:0;z-index:7000;
@@ -296,20 +281,6 @@ body::after{width:380px;height:380px;bottom:8%;right:-90px;
     <div class="tl" id="tl"></div>
   </section>
 
-  <!-- GALLERY -->
-  <section id="gallery">
-    <p class="slabel">little frames</p>
-    <h2 class="stitle fi">Our Little Gallery 🌸</h2>
-    <p class="gnote fi">Every picture tells the part words couldn't finish.</p>
-    <div class="ggrid fi" id="ggrid">
-      <!-- REPLACE src with your actual photo paths e.g. "photos/her1.jpg" -->
-      <div class="gi" data-src="her-photo-1.jpg"><img src="/workspaces/project/WhatsApp Image 2026-05-16 at 19.41.50.jpeg" alt="" onerror="this.closest('.gi').classList.add('ph')"/><div class="phi">📷<br/>her-photo-1.jpg</div></div>
-      <div class="gi" data-src="memory-photo-1.jpg"><img src="/workspaces/project/WhatsApp Image 2026-05-16 at 19.41.49 (1).jpeg" alt="" onerror="this.closest('.gi').classList.add('ph')"/><div class="phi">📷<br/></div></div>
-      <div class="gi" data-src="memory-photo-2.jpg"><img src="/workspaces/project/WhatsApp Image 2026-05-16 at 19.41.49.jpeg"alt="" onerror="this.closest('.gi').classList.add('ph')"/><div class="phi">📷<br/>memory-photo-2.jpg</div></div>
-      <div class="gi" data-src="memory-photo-3.jpg"><img src="/workspaces/project/her photo1.jpeg"alt="" onerror="this.closest('.gi').classList.add('ph')"/><div class="phi">📷<br/>memory-photo-3.jpg</div></div>
-      <!-- ADD MORE: copy a line above, change src & placeholder text -->
-    </div>
-  </section>
 
   <!-- LIGHTBOX -->
   <div id="lb"><button id="lbc">✕</button><img id="lbi" src="" alt=""/></div>
